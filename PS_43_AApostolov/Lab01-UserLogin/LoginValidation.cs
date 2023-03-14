@@ -73,7 +73,7 @@ namespace Lab01_UserLogin
 
             user.CopyUser(found);
 
-            Logger.LogActivity("Login");
+            Logger.LogActivity(Activities.Login);
             CurrentUserRole = found.Role;
             CurrentUserUsername = found.Username ?? string.Empty;
             return true;

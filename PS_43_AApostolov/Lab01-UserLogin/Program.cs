@@ -61,6 +61,19 @@
                                 string activeUntil = InputString("Enter the new active until date and time (dd/mm/yyyy hh:mm:ss): ");
                                 UserData.SetUserActiveTo(uname, Convert.ToDateTime(activeUntil));
                                 break;
+                            case "3":
+                                Console.WriteLine($"Username\t\tCreated\t\tActiveUntil");
+                                Console.WriteLine("---------------------------------------------------------------------");
+                                foreach (var user in UserData.TestUsers)
+                                {
+                                    Console.WriteLine($"{user.Username}\t\t{user.Created}\t\t{user.ActiveUntil}\t\t");
+                                }
+                                Console.WriteLine();
+                                break;
+                            case "4":
+                                Console.WriteLine("\n=== ACTIVITY LOG ===");
+                                Console.WriteLine(Logger.ReadLogLines());
+                                break;
                         }
                     }
                     else
@@ -98,6 +111,8 @@
                 Console.WriteLine("1: Change the role of a user");
                 Console.WriteLine("2: Change until when a user is active");
                 Console.WriteLine("3: List all users");
+                Console.WriteLine("4: Show activity log");
+                Console.WriteLine("5: Show current session activities");
             }
             else
             {

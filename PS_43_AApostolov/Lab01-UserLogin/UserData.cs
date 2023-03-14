@@ -61,7 +61,7 @@
             }
 
             found.ActiveUntil = activeUntil;
-            Logger.LogActivity($"Changed active until of user \"{found.Username}\"");
+            Logger.LogActivity(Activities.UserActiveToChanged, $"(Username: '{found.Username}')");
         }
 
         public static void AssignUserRole(string username, UserRoles role)
@@ -73,7 +73,7 @@
             }
 
             found.Role = role;
-            Logger.LogActivity($"Changed role of user \"{found.Username}\"");
+            Logger.LogActivity(Activities.UserRoleChanged, $"(Username: '{found.Username}')");
         }
     }
 }
