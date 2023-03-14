@@ -50,6 +50,7 @@
                         switch (command)
                         {
                             case "0": // Exit
+                                Logger.LogActivity(Activities.Exit);
                                 return;
                             case "1":
                                 uname = InputString("Enter username: ");
@@ -69,10 +70,17 @@
                                     Console.WriteLine($"{user.Username}\t\t{user.Created}\t\t{user.ActiveUntil}\t\t");
                                 }
                                 Console.WriteLine();
+                                Logger.LogActivity(Activities.ListUsers);
                                 break;
                             case "4":
                                 Console.WriteLine("\n=== ACTIVITY LOG ===");
-                                Console.WriteLine(Logger.ReadLogLines());
+                                Console.WriteLine(Logger.GetLogLines());
+                                Logger.LogActivity(Activities.ShowLog);
+                                break;
+                            case "5":
+                                Console.WriteLine("\n=== Current session activities ===");
+                                Console.WriteLine(Logger.GetCurrentSessionActivitiesLines());
+                                Logger.LogActivity(Activities.ShowCurrentSessionActivities);
                                 break;
                         }
                     }
@@ -81,7 +89,13 @@
                         switch (command)
                         {
                             case "0": // Exit
+                                Logger.LogActivity(Activities.Exit);
                                 return;
+                            case "1":
+                                Console.WriteLine("\n=== Current session activities ===");
+                                Console.WriteLine(Logger.GetCurrentSessionActivitiesLines());
+                                Logger.LogActivity(Activities.ShowCurrentSessionActivities);
+                                break;
                         }
                     }
                 }
@@ -111,12 +125,12 @@
                 Console.WriteLine("1: Change the role of a user");
                 Console.WriteLine("2: Change until when a user is active");
                 Console.WriteLine("3: List all users");
-                Console.WriteLine("4: Show activity log");
+                Console.WriteLine("4: Show the full activity log");
                 Console.WriteLine("5: Show current session activities");
             }
             else
             {
-                // pass
+                Console.WriteLine("1: Show current session activities");
             }
         }
     }

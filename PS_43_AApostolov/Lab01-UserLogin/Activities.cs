@@ -12,6 +12,8 @@ namespace Lab01_UserLogin
         UserRoleChanged,
         UserActiveToChanged,
         ListUsers,
-        ShowLog
+        ShowLog,
+        ShowCurrentSessionActivities,
+        Exit
     }
 }

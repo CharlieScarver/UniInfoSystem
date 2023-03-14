@@ -26,11 +26,16 @@ namespace Lab01_UserLogin
                     activityDesc = "Viewed the user list";
                     break;
                 case Activities.ShowLog:
-                    activityDesc = "Viewed the activity log";
+                    activityDesc = "Viewed the full activity log";
                     break;
-
+                case Activities.ShowCurrentSessionActivities:
+                    activityDesc = "Viewed the current session activities";
+                    break;
+                case Activities.Exit:
+                    activityDesc = "Exited the app";
+                    break;
             }
-            LogActivityString($"{activityDesc};{additionalText}");
+            LogActivityString($"{activityDesc}; {additionalText}");
         }
 
         private static void LogActivityString(string text)
@@ -38,11 +43,11 @@ namespace Lab01_UserLogin
             StringBuilder sb = new StringBuilder();
 
             sb.Append(DateTime.Now);
-            sb.Append(";");
+            sb.Append("; ");
             sb.Append(LoginValidation.CurrentUserUsername);
-            sb.Append(";");
+            sb.Append("; ");
             sb.Append(LoginValidation.CurrentUserRole);
-            sb.Append(";");
+            sb.Append("; ");
             sb.Append(text);
 
             string activityLine = sb.ToString();
@@ -51,7 +56,7 @@ namespace Lab01_UserLogin
             File.AppendAllText(logFileName, activityLine + "\n");
         }
 
-        public static string ReadLogLines()
+        public static string GetLogLines()
         {
             StreamReader sr = new StreamReader(logFileName);
             StringBuilder sb = new StringBuilder();
@@ -59,10 +64,22 @@ namespace Lab01_UserLogin
             while (!sr.EndOfStream)
             {
                 string line = sr.ReadLine() ?? "";
-                sb.Append(line);
+                sb.AppendLine(line);
             }
             
             sr.Close();
+
+            return sb.ToString();
+        }
+
+        public static string GetCurrentSessionActivitiesLines()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string line in currentSessionActivities)
+            {
+                sb.AppendLine(line);
+            }
 
             return sb.ToString();
         }
