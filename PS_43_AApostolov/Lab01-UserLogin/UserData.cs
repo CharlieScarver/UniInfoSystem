@@ -28,15 +28,7 @@
 
         public static User? IsUserPassCorrect(string username, string password)
         {
-            foreach (User u in TestUsers)
-            {
-                if (username == u.Username && password == u.Password)
-                {
-                    return u;
-                }
-            }
-
-            return null;
+            return (from u in TestUsers where username == u.Username && password == u.Password select u).SingleOrDefault();
         }
 
         public static User? FindUserByUsername(string username)

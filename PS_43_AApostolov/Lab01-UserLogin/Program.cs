@@ -1,4 +1,6 @@
-﻿namespace Lab01_UserLogin
+﻿using System.Text;
+
+namespace Lab01_UserLogin
 {
     public class Program
     {
@@ -74,12 +76,20 @@
                                 break;
                             case "4":
                                 Console.WriteLine("\n=== ACTIVITY LOG ===");
-                                Console.WriteLine(Logger.GetLogLines());
+                                IEnumerable<string> lines = Logger.GetFullLogLines();
+                                StringBuilder sb = new StringBuilder();
+
+                                foreach (string line in lines)
+                                {
+                                    sb.AppendLine(line);
+                                }
+
+                                Console.WriteLine(sb.ToString());
                                 Logger.LogActivity(Activities.ShowLog);
                                 break;
                             case "5":
                                 Console.WriteLine("\n=== Current session activities ===");
-                                Console.WriteLine(Logger.GetCurrentSessionActivitiesLines());
+                                Console.WriteLine(Logger.GetLogActivities());
                                 Logger.LogActivity(Activities.ShowCurrentSessionActivities);
                                 break;
                         }
@@ -93,7 +103,11 @@
                                 return;
                             case "1":
                                 Console.WriteLine("\n=== Current session activities ===");
-                                Console.WriteLine(Logger.GetCurrentSessionActivitiesLines());
+                                IEnumerable<string> lines = Logger.GetCurrentSessionActivitiesLines();
+                                foreach (string line in lines)
+                                {
+                                    Console.WriteLine(line);
+                                }
                                 Logger.LogActivity(Activities.ShowCurrentSessionActivities);
                                 break;
                         }

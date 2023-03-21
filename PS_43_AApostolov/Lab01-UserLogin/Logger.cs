@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Linq;
 
 namespace Lab01_UserLogin
 {
@@ -53,10 +54,32 @@ namespace Lab01_UserLogin
             string activityLine = sb.ToString();
             currentSessionActivities.Add(activityLine);
 
-            File.AppendAllText(logFileName, activityLine + "\n");
+            try
+            {
+                File.AppendAllText(logFileName, activityLine + "\n");
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine($"[ERROR]: {e.Message}");
+            }
         }
 
-        public static string GetLogLines()
+        public static IEnumerable<string> GetFullLogLines()
+        {
+            List<string> lines = new List<string>();
+            StreamReader sr = new StreamReader(logFileName);
+
+            while (!sr.EndOfStream)
+            {
+                string line = sr.ReadLine() ?? "";
+                lines.Add(line);
+            }
+
+            sr.Close();
+            return lines;
+        }
+
+        public static string GetFullLog()
         {
             StreamReader sr = new StreamReader(logFileName);
             StringBuilder sb = new StringBuilder();
@@ -72,16 +95,14 @@ namespace Lab01_UserLogin
             return sb.ToString();
         }
 
-        public static string GetCurrentSessionActivitiesLines()
+        public static IEnumerable<string> GetCurrentSessionActivitiesLines(string filter = "")
         {
-            StringBuilder sb = new StringBuilder();
+            return from act in currentSessionActivities where act.Contains(filter) select act;
+        }
 
-            foreach (string line in currentSessionActivities)
-            {
-                sb.AppendLine(line);
-            }
-
-            return sb.ToString();
+        public static string GetLogActivities()
+        {
+            return string.Join("\n", GetCurrentSessionActivitiesLines());
         }
     }
 }
