@@ -20,7 +20,6 @@ namespace StudentInfoSystem
     /// </summary>
     public partial class MainWindow : Window
     {
-        private StudentData StudentData { get; set; }
         private bool IsLoggedIn { get; set; }
 
 
@@ -28,7 +27,6 @@ namespace StudentInfoSystem
         {
             InitializeComponent();
             Title = "Student Info System";
-            StudentData = new StudentData();
         }
 
         private void ClearAllButton_Click(object sender, RoutedEventArgs e)

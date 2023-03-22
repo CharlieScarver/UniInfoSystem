@@ -7,35 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Name="MainGrid">
-        <Label Content="First Name: " HorizontalAlignment="Left" Height="25" Margin="43,40,0,0" VerticalAlignment="Top" Width="81"/>
-        <Label Content="Middle Name:" HorizontalAlignment="Left" Height="25" Margin="43,68,0,0" VerticalAlignment="Top" Width="81"/>
-        <Label Content="Last Name: " HorizontalAlignment="Left" Height="25" Margin="43,96,0,0" VerticalAlignment="Top" Width="81"/>
-        <TextBox x:Name="firstNameText" HorizontalAlignment="Left" Margin="123,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="middleNameText" HorizontalAlignment="Left" Margin="123,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="lastNameText" HorizontalAlignment="Left" Margin="123,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Label Content="First Name: " HorizontalAlignment="Left" Height="24" Margin="40,43,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Middle Name:" HorizontalAlignment="Left" Height="24" Margin="40,73,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Last Name: " HorizontalAlignment="Left" Height="24" Margin="40,103,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="firstNameText" HorizontalAlignment="Left" Margin="130,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="middleNameText" HorizontalAlignment="Left" Margin="130,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="lastNameText" HorizontalAlignment="Left" Margin="130,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <GroupBox Header="Personal Information" Margin="0,6,0,279" >
         </GroupBox>
-        <Label Content="Faculty:" HorizontalAlignment="Left" Height="32" Margin="43,191,0,0" VerticalAlignment="Top" Width="95"/>
-        <Label Content="Specialty:" HorizontalAlignment="Left" Height="32" Margin="43,234,0,0" VerticalAlignment="Top" Width="95"/>
-        <Label Content="Education Lvl:" HorizontalAlignment="Left" Height="32" Margin="43,271,0,0" VerticalAlignment="Top" Width="95"/>
-        <Label Content="Status:" HorizontalAlignment="Left" Height="32" Margin="43,308,0,0" VerticalAlignment="Top" Width="95"/>
-        <Label Content="Fac. Number:" HorizontalAlignment="Left" Height="32" Margin="43,345,0,0" VerticalAlignment="Top" Width="95"/>
-        <TextBox x:Name="facultyText" HorizontalAlignment="Left" Margin="129,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="specialtyText" HorizontalAlignment="Left" Margin="129,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="educationLevelText" HorizontalAlignment="Left" Margin="129,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="statusText" HorizontalAlignment="Left" Margin="129,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="facNumText" HorizontalAlignment="Left" Margin="129,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Course:" HorizontalAlignment="Left" Height="32" Margin="413,0,0,0" VerticalAlignment="Center" Width="95"/>
-        <Label Content="Potok:" HorizontalAlignment="Left" Height="32" Margin="413,229,0,0" VerticalAlignment="Top" Width="95"/>
-        <Label Content="Group:" HorizontalAlignment="Left" Height="32" Margin="413,260,0,0" VerticalAlignment="Top" Width="95"/>
-        <TextBox x:Name="courseText" HorizontalAlignment="Left" Margin="489,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="50"/>
-        <TextBox x:Name="potokText" HorizontalAlignment="Left" Margin="489,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-        <TextBox x:Name="groupText" HorizontalAlignment="Left" Margin="489,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Faculty:" HorizontalAlignment="Left" Height="24" Margin="40,193,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Specialty:" HorizontalAlignment="Left" Height="24" Margin="40,223,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Education Lvl:" HorizontalAlignment="Left" Height="24" Margin="40,253,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Status:" HorizontalAlignment="Left" Height="24" Margin="40,283,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Fac. Number:" HorizontalAlignment="Left" Height="24" Margin="40,313,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="facultyText" HorizontalAlignment="Left" Margin="130,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="specialtyText" HorizontalAlignment="Left" Margin="130,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="educationLevelText" HorizontalAlignment="Left" Margin="130,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="statusText" HorizontalAlignment="Left" Margin="130,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="facNumText" HorizontalAlignment="Left" Margin="130,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Course:" HorizontalAlignment="Left" Height="24" Margin="400,193,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Potok:" HorizontalAlignment="Left" Height="24" Margin="400,223,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Group:" HorizontalAlignment="Left" Height="24" Margin="400,253,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="courseText" HorizontalAlignment="Left" Margin="490,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="potokText" HorizontalAlignment="Left" Margin="490,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="groupText" HorizontalAlignment="Left" Margin="490,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
         <GroupBox Header="Student Information" Margin="0,160,0,0"/>
-        <Button x:Name="clearAllButton" Content="Clear" HorizontalAlignment="Left" Margin="648,181,0,0" VerticalAlignment="Top" Width="130" Click="ClearAllButton_Click"/>
-        <Button x:Name="showStudentButton" Content="Show Student" HorizontalAlignment="Left" Margin="648,211,0,0" VerticalAlignment="Top" Width="130" Click="ShowStudentButton_Click"/>
+        <Button x:Name="clearAllButton" Content="Clear" HorizontalAlignment="Left" Margin="650,193,0,0" VerticalAlignment="Top" Width="100" Click="ClearAllButton_Click"/>
+        <Button x:Name="showStudentButton" Content="Show Student" HorizontalAlignment="Left" Margin="650,223,0,0" VerticalAlignment="Top" Width="100" Click="ShowStudentButton_Click"/>
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="650,253,0,0" VerticalAlignment="Top" Width="100" Click="LoginButton_Click"/>
         <Button x:Name="deactivateAllFieldsButton" Content="Deactivate All Fields" HorizontalAlignment="Left" Margin="375,385,0,0" VerticalAlignment="Top" Width="200" Click="DeactivateAllFieldsButton_Click"/>
-        <Button x:Name="activateAllFieldsButton" Content="Activate All Fields" HorizontalAlignment="Left" Margin="582,385,0,0" VerticalAlignment="Top" Width="185" Click="ActivateAllFieldsButton_Click" Height="20"/>
-        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="648,245,0,0" VerticalAlignment="Top" Width="130" Click="LoginButton_Click"/>
+        <Button x:Name="activateAllFieldsButton" Content="Activate All Fields" HorizontalAlignment="Left" Margin="582,385,0,0" VerticalAlignment="Top" Width="200" Click="ActivateAllFieldsButton_Click" Height="20"/>
     </Grid>
 </Window>
