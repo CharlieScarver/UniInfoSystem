@@ -23,7 +23,17 @@ namespace WPFhello
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            
+            ListBoxItem james = new ListBoxItem();
+            james.Content = "James";
+            lstBxPeople.Items.Add(james);
+
+            ListBoxItem david = new ListBoxItem();
+            david.Content = "David";
+            lstBxPeople.Items.Add(david);
+
+            lstBxPeople.SelectedItem = james;
         }
 
         private void btnHello_Click(object sender, RoutedEventArgs e)
@@ -107,6 +117,17 @@ namespace WPFhello
         {
             MessageBox.Show("This is Windows Presentation Foundation!");
             txtBlock1.Text = DateTime.Now.ToString();
+
+            MyMessage msgWindow = new MyMessage();
+            msgWindow.Show();
+        }
+
+        private void btnGreeting_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstBxPeople.SelectedItem is not ListBoxItem) return;
+
+            string greetingMsg = (lstBxPeople.SelectedItem as ListBoxItem).Content.ToString() ?? "";
+            MessageBox.Show("Hi " + greetingMsg);
         }
     }
 }
