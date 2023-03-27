@@ -5,9 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFhello"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="MyLabel" Content="Hello, WPF!" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="20"/>
+        Closing="winForm_Closing"  
+        Title="MainWindow" Height="800" Width="800">
+    <Grid Name="grdMain">
+        <Label x:Name="MyLabel" Content="Hello, WPF!" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="20" FontWeight="Bold"/>
+        <GroupBox x:Name="gbUser" Header="GroupBox"/>
+        <Label x:Name="lblError" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,120,0,0" FontWeight="Bold" Height="20" Padding="1,1,1,1" Width="300" />
+        <Label x:Name="lblName" Content="Name:" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,100,0,0" TextWrapping="Wrap" Width="170" Height="20" LostFocus="txtName_LostFocus" TextChanged="txtName_LostFocus"/>
+        
+        <Label x:Name="lblN" Content="N:" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        <TextBox x:Name="txtN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,150,0,0" TextWrapping="Wrap" Width="170" Height="20" TextChanged="txtN_TextChanged"/>
+        <Label x:Name="lblY" Content="Y:" HorizontalAlignment="Left" Margin="50,180,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        <TextBox x:Name="txtY" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,180,0,0" TextWrapping="Wrap" Width="170" Height="20" TextChanged="txtN_TextChanged"/>
+        <Label x:Name="lblResult" Content="Result" HorizontalAlignment="Left" Margin="50,210,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        <Label x:Name="lblResultText" Content="-" HorizontalAlignment="Left" Margin="110,210,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        
+        <Label x:Name="lblName2" Content="Name2:" HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        <TextBox x:Name="txtName2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,250,0,0" TextWrapping="Wrap" Width="170" Height="20" LostFocus="txtName_LostFocus" TextChanged="txtName_LostFocus"/>
+        <Label x:Name="lblName3" Content="Name3:" HorizontalAlignment="Left" Margin="50,280,0,0" VerticalAlignment="Top" Height="20" Padding="1,1,1,1"/>
+        <TextBox x:Name="txtName3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,280,0,0" TextWrapping="Wrap" Width="170" Height="20" LostFocus="txtName_LostFocus" TextChanged="txtName_LostFocus"/>
 
+        <TextBlock x:Name="txtBlock1" Text="Hello, XAML!" Background="Bisque" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,310,0,0" Padding="1,1,1,1" TextWrapping="Wrap" Width="170" Height="20" />
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black">
+            I edit XAML myself!
+        </TextBlock>
+        <Button HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="100" Click="Button_Click">
+            Click me!
+        </Button>
+
+        <Button x:Name="btnHello" Content="Hello!" HorizontalAlignment="Left" Margin="310,98,0,0" VerticalAlignment="Top" Padding="7,3,7,3" Click="btnHello_Click"/>
     </Grid>
 </Window>
