@@ -23,7 +23,9 @@
         <TextBox x:Name="facultyText" HorizontalAlignment="Left" Margin="130,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBox x:Name="specialtyText" HorizontalAlignment="Left" Margin="130,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBox x:Name="educationLevelText" HorizontalAlignment="Left" Margin="130,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="statusText" HorizontalAlignment="Left" Margin="130,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <ComboBox x:Name="statusText" HorizontalAlignment="Left" Margin="130,285,0,0" VerticalAlignment="Top" Width="200"
+                  ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=StudStatusChoices}"
+                  DropDownOpened="statusText_DropDownOpened"/>
         <TextBox x:Name="facNumText" HorizontalAlignment="Left" Margin="130,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Course:" HorizontalAlignment="Left" Height="24" Margin="400,193,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Potok:" HorizontalAlignment="Left" Height="24" Margin="400,223,0,0" VerticalAlignment="Top" Width="100"/>
@@ -35,6 +37,8 @@
         <Button x:Name="clearAllButton" Content="Clear" HorizontalAlignment="Left" Margin="650,193,0,0" VerticalAlignment="Top" Width="100" Click="ClearAllButton_Click"/>
         <Button x:Name="showStudentButton" Content="Show Student" HorizontalAlignment="Left" Margin="650,223,0,0" VerticalAlignment="Top" Width="100" Click="ShowStudentButton_Click"/>
         <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="650,253,0,0" VerticalAlignment="Top" Width="100" Click="LoginButton_Click"/>
+        <Button x:Name="btnCheckStudents" Content="Check Students" HorizontalAlignment="Left" Margin="650,283,0,0" VerticalAlignment="Top" Width="100" Click="btnCheckStudents_Click"/>
+        <Button x:Name="btnCopyStudents" Content="Copy Students" HorizontalAlignment="Left" Margin="650,313,0,0" VerticalAlignment="Top" Width="100" Click="btnCopyStudents_Click"/>
         <Button x:Name="deactivateAllFieldsButton" Content="Deactivate All Fields" HorizontalAlignment="Left" Margin="375,385,0,0" VerticalAlignment="Top" Width="200" Click="DeactivateAllFieldsButton_Click"/>
         <Button x:Name="activateAllFieldsButton" Content="Activate All Fields" HorizontalAlignment="Left" Margin="582,385,0,0" VerticalAlignment="Top" Width="200" Click="ActivateAllFieldsButton_Click" Height="20"/>
     </Grid>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-
-namespace Lab01_UserLogin
+﻿namespace Lab01_UserLogin
 {
     public class User
     {
@@ -19,6 +16,8 @@ namespace Lab01_UserLogin
             ActiveUntil = DateTime.MaxValue;
         }
 
+        public int UserId { get; set; }
+
         public string? Username { get; set; }
 
         public string? Password { get; set; }
@@ -29,7 +28,7 @@ namespace Lab01_UserLogin
 
         public DateTime Created { get; set; }
 
-        public DateTime ActiveUntil { get; set; }
+        public DateTime? ActiveUntil { get; set; }
 
         public void CopyUser(User user)
         {

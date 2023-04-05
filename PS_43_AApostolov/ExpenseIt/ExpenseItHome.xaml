@@ -31,8 +31,13 @@
         <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2"
                  ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ExpenseDataSource}">
         </ListBox>
-        
+
+        <Label Grid.Column="0" Grid.Row="3" Content="{Binding Path=LastChecked}"/>
+
         <!-- View report button -->
-        <Button x:Name="btnView" Margin="0,10,0,0" Grid.Column="1" Grid.Row="3"                 Content="{Binding ElementName=peopleListBox, Path=SelectedItem.Name}"                Width="125" Height="25" Click="btnView_Click"></Button>
+        <Button x:Name="btnView" Margin="0,10,0,0" Grid.Column="1" Grid.Row="3" 
+                Content="{Binding ElementName=peopleListBox, Path=SelectedItem.Name}"
+                Width="125" Height="25" Click="btnView_Click"></Button>
+
     </Grid>
 </Window>

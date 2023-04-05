@@ -2,6 +2,6 @@
 {
     public enum StudentStatus
     {
-        Graduated, OnHold, SemiGraduated, Studying
+        Graduated, OnHoldGrade, OnHoldIllness, OnHoldMaternity, SemiGraduated, Studying, SoloPrep, Remote
     }
 }

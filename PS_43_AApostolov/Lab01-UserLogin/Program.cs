@@ -65,11 +65,12 @@ namespace Lab01_UserLogin
                                 UserData.SetUserActiveTo(uname, Convert.ToDateTime(activeUntil));
                                 break;
                             case "3":
-                                Console.WriteLine($"Username\t\tCreated\t\tActiveUntil");
+                                Console.WriteLine($"Username\t\tRole\t\tCreated\t\tActiveUntil");
                                 Console.WriteLine("---------------------------------------------------------------------");
-                                foreach (var user in UserData.TestUsers)
+                                UserContext context = new UserContext();
+                                foreach (var user in context.Users)
                                 {
-                                    Console.WriteLine($"{user.Username}\t\t{user.Created}\t\t{user.ActiveUntil}\t\t");
+                                    Console.WriteLine($"{user.Username}\t\t{user.Role}\t\t{user.Created}\t\t{user.ActiveUntil}\t\t");
                                 }
                                 Console.WriteLine();
                                 Logger.LogActivity(Activities.ListUsers);

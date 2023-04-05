@@ -28,24 +28,29 @@
 
         public static User? IsUserPassCorrect(string username, string password)
         {
-            return (from u in TestUsers where username == u.Username && password == u.Password select u).SingleOrDefault();
+            UserContext context = new UserContext();
+            User? result =
+                (from u in context.Users
+                 where u.Username == username && u.Password == password
+                 select u).FirstOrDefault();
+            return result;
         }
 
         public static User? FindUserByUsername(string username)
         {
-            foreach (User u in TestUsers)
-            {
-                if (username == u.Username)
-                {
-                    return u;
-                }
-            }
+            UserContext context = new UserContext();
 
-            return null;
+            User? result =
+                (from u in context.Users
+                 where u.Username == username
+                 select u).FirstOrDefault();
+
+            return result;
         }
 
         public static void SetUserActiveTo(string username, DateTime activeUntil)
         {
+            UserContext context = new UserContext();
             User? found = FindUserByUsername(username);
             if (found == null)
             {
@@ -53,11 +58,14 @@
             }
 
             found.ActiveUntil = activeUntil;
+
+            context.SaveChanges();
             Logger.LogActivity(Activities.UserActiveToChanged, $"(Username: {found.Username}, New ActiveUntil: {found.ActiveUntil})");
         }
 
         public static void AssignUserRole(string username, UserRoles role)
         {
+            UserContext context = new UserContext();
             User? found = FindUserByUsername(username);
             if (found == null)
             {
@@ -65,6 +73,8 @@
             }
 
             found.Role = role;
+
+            context.SaveChanges();
             Logger.LogActivity(Activities.UserRoleChanged, $"(Username: {found.Username}, New role: {found.Role})");
         }
     }

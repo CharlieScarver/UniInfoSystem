@@ -33,7 +33,8 @@
         </TextBlock>
         <Button HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="100" Click="Button_Click">
             Click me!
-        </Button>
+        </Button>
+
         <ListBox x:Name="lstBxPeople" Margin="560,100,39,524">
             <ListBoxItem Content="Mike"/>
             <ListBoxItem Content="Lisa"/>

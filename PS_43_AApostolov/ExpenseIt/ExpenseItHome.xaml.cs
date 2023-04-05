@@ -19,6 +19,7 @@ namespace ExpenseIt
     /// </summary>
     public partial class ExpenseItHome : Window
     {
+
         public ExpenseItHome()
         {
             InitializeComponent();
@@ -95,11 +96,15 @@ namespace ExpenseIt
                  }
              }
             };
+            
+            LastChecked = DateTime.Now;
+
+            DataContext = this;
         }
 
         public string MainCaptionText { get; set; }
         public List<Person> ExpenseDataSource { get; set; }
-
+        public DateTime LastChecked { get; set; }
 
         private void btnView_Click(object sender, RoutedEventArgs e)
         {
