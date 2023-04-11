@@ -1,30 +1,22 @@
-﻿using System;
+﻿using Lab01_UserLogin;
+using StudentInfoSystem.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.ComponentModel;
-using Lab01_UserLogin;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace StudentInfoSystem
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged, ILoginWindow, IShowStudentWindow
     {
-        private bool IsLoggedIn { get; set; }
+        private Student? LoggedIn { get; set; }
         public List<string> StudStatusChoices { get; set; }
 
 
@@ -53,7 +45,7 @@ namespace StudentInfoSystem
         private void ShowStudentButton_Click(object sender, RoutedEventArgs e)
         {
             Student student = StudentData.TestStudents[0];
-            ShowStudent(student);
+            ShowStudentDetails(student);
         }
 
         private void DeactivateAllFieldsButton_Click(object sender, RoutedEventArgs e)
@@ -78,30 +70,30 @@ namespace StudentInfoSystem
             }
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoggedIn)
-            {
-                ActivateAllFieldsButton_Click(sender, e);
+        //private void LoginButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (!IsLoggedIn)
+        //    {
+        //        ActivateAllFieldsButton_Click(sender, e);
 
-                Student? s = StudentData.TestStudents.OrderBy(st => long.Parse(st.FacNum)).FirstOrDefault();
-                if (s == null)
-                {
-                    return;
-                }
+        //        Student? s = StudentData.TestStudents.OrderBy(st => long.Parse(st.FacNum)).FirstOrDefault();
+        //        if (s == null)
+        //        {
+        //            return;
+        //        }
 
-                IsLoggedIn = true;
-                ShowStudent(s);
-                loginButton.Content = "Logout";
-            }
-            else
-            {
-                DeactivateAllFieldsButton_Click(sender, e);
-                ClearAllButton_Click(sender, e);
-                IsLoggedIn = false;
-                loginButton.Content = "Login";
-            }
-        }
+        //        IsLoggedIn = true;
+        //        ShowStudent(s);
+        //        loginButton.Content = "Logout";
+        //    }
+        //    else
+        //    {
+        //        DeactivateAllFieldsButton_Click(sender, e);
+        //        ClearAllButton_Click(sender, e);
+        //        IsLoggedIn = false;
+        //        loginButton.Content = "Login";
+        //    }
+        //}
 
         private void statusText_DropDownOpened(object sender, EventArgs e)
         {
@@ -116,16 +108,46 @@ namespace StudentInfoSystem
 
         private void btnCopyStudents_Click(object sender, EventArgs e)
         {
-            if (TestStudentsIfEmpty())
-            {
+            //if (TestStudentsIfEmpty())
+            //{
                 CopyTestStudents();
+            //}
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (LoggedIn == null)
+            {
+                LoginForm expenseReport = new LoginForm(this);
+                expenseReport.Show();
+            }
+            else
+            {
+                DeactivateAllFieldsButton_Click(sender, e);
+                ClearAllButton_Click(sender, e);
+                LoggedIn = null;
+                loginButton.Content = "Login";
             }
         }
 
 
+        // --------------- Implemented methods
+
+        public void OnSuccessfulLogin(Student student)
+        {
+            LoggedIn = student;
+            ShowStudentDetails(student);
+            loginButton.Content = "Logout";
+        }
+
+        public void ShowStudent(Student student)
+        {
+            ShowStudentDetails(student);
+        }
+
         // ---------------
 
-        private void ShowStudent(Student student)
+        private void ShowStudentDetails(Student student)
         {
             firstNameText.Text = student.FirstName;
             middleNameText.Text = student.MiddleName;
@@ -195,32 +217,16 @@ namespace StudentInfoSystem
                 return;
             }
 
+            // The foreign key in Users requires every User with a FacNum to have a Student
+            foreach (Student student in StudentData.TestUsers)
+            {
+                context.Students.Add(student);
+            }
+
             foreach (User user in UserData.TestUsers)
             {
                 context.Users.Add(user);
             }
-            context.SaveChanges();
-        }
-
-        private List<Student> GetStudents()
-        {
-            StudentInfoContext context = new StudentInfoContext();
-            List<Student> students = context.Students.ToList();
-            return students;
-        }
-
-        private void DeleteStudent(string facNum)
-        {
-            StudentInfoContext context = new StudentInfoContext();
-            Student? student =
-                 (from st in context.Students
-                  where st.FacNum == facNum
-                  select st).FirstOrDefault();
-
-            if (student == null) { return; }
-
-            context.Students.Remove(student);
-
             context.SaveChanges();
         }
     }
