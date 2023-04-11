@@ -23,7 +23,7 @@ namespace ExpenseIt
         public ExpenseItHome()
         {
             InitializeComponent();
-            MainCaptionText = "View Expense Report";
+            MainCaptionText = "View Expense Report:";
 
             ExpenseDataSource = new List<Person>()
             {
