@@ -1,4 +1,8 @@
-﻿namespace StudentInfoSystem
+﻿using Lab01_UserLogin;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace StudentInfoSystem
 {
     public class Student
     {
@@ -29,7 +33,8 @@
             Potok = potok;
             Group = group;
         }
-        
+
+        [Key]
         public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
@@ -38,11 +43,15 @@
         public string? Specialty { get; set; }
         public string? EducationLevel { get; set; }
         public StudentStatus Status { get; set; }
-        public string FacNum { get; set; }
+
+        [ForeignKey("fk_Student_User_FacNum")]
+        public string? FacNum { get; set; }
+
         public string? Year { get; set; }
         public string? Potok { get; set; }
         public string? Group { get; set; }
 
 
+        public User? User { get; set; }
     }
 }

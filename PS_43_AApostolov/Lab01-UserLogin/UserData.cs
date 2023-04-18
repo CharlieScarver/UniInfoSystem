@@ -10,9 +10,10 @@
             {
                 _testUsers = new List<User>
                 {
-                    new User("aapos", "12345", "121220120", UserRoles.Admin),
+                    new User("aapos", "12345", "121220145", UserRoles.Admin),
                     new User("petrov", "12345", "121220114", UserRoles.Student),
-                    new User("iliev", "12345", "121220153", UserRoles.Student)
+                    new User("iliev", "12345", "121220153", UserRoles.Student),
+                    new User("admin", "12345", null, UserRoles.Admin)
                 };
             }
         }

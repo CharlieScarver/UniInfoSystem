@@ -1,4 +1,7 @@
-﻿namespace Lab01_UserLogin
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Lab01_UserLogin
 {
     public class User
     {
@@ -16,12 +19,16 @@
             ActiveUntil = DateTime.MaxValue;
         }
 
+        [Key]
         public int UserId { get; set; }
 
+        [Required]
         public string? Username { get; set; }
 
+        [Required]
         public string? Password { get; set; }
 
+        [ForeignKey("fk_User_Student_FacNum")]
         public string? FacNum { get; set; }
 
         public UserRoles Role { get; set; }
