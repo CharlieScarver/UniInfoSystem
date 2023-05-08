@@ -28,8 +28,12 @@
         <Border Height="35" Padding="5" Background="#4E87D4" Grid.Column="1" Grid.Row="1">
             <Label VerticalAlignment="Center" Foreground="White">Names</Label>
         </Border>
+        <ListBox Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Path=PersonsChecked}">
+        </ListBox>
+
         <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2"
-                 ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ExpenseDataSource}">
+                 ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ExpenseDataSource}"
+                 SelectionChanged="peopleListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding Path=Name}"/>

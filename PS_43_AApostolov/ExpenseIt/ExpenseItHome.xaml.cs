@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +13,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace ExpenseIt
 {
     /// <summary>
     /// Interaction logic for ExpenseItHome.xaml
     /// </summary>
-    public partial class ExpenseItHome : Window
+    public partial class ExpenseItHome : Window, INotifyPropertyChanged
     {
+        private DateTime lastChecked;
 
         public ExpenseItHome()
         {
@@ -98,18 +102,43 @@ namespace ExpenseIt
             };
             
             LastChecked = DateTime.Now;
+            PersonsChecked = new ObservableCollection<string>();
 
+            // Data Binding
             DataContext = this;
         }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public string MainCaptionText { get; set; }
         public List<Person> ExpenseDataSource { get; set; }
-        public DateTime LastChecked { get; set; }
+        public DateTime LastChecked
+        {
+            get { return lastChecked; }
+            set
+            {
+                lastChecked = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("LastChecked"));
+                }
+            }
+        }
+
+        public ObservableCollection<string> PersonsChecked { get; set; }
 
         private void btnView_Click(object sender, RoutedEventArgs e)
         {
             ExpenseReport expenseReport = new ExpenseReport(peopleListBox.SelectedItem);
             expenseReport.Show();
+        }
+
+        private void peopleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LastChecked = DateTime.Now;
+
+            PersonsChecked.Add((peopleListBox.SelectedItem as Person).Name);
         }
     }
 }
